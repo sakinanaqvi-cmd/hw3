@@ -26,6 +26,7 @@ void print(Node* head);
  * Deallocates the linked list nodes
  */
 void dealloc(Node* head);
+void llpivot (Node*& head, Node*& smaller, Node*& larger, int pivot);
 
 
 Node* readList(const char* filename)
@@ -86,9 +87,6 @@ int main(int argc, char* argv[])
     print(head);
 
     // Test out your linked list code
-
-
-
     
     return 0;
 
