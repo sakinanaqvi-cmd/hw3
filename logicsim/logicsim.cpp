@@ -1,28 +1,32 @@
+#include "llrec.h"
 #include <iostream>
-#include <sstream>
-#include <string>
-
-#include "circuit.h"
-
+#include <vector>
 using namespace std;
 
-int main(int argc, char* argv[])
-{
-	stringstream ss;
-  Circuit C;
-  if(argc != 1)
-  {
-    if(C.parse(argv[1]))
-    {
-    	  C.startUml(ss);
-        C.run(ss);
-        C.endUml(ss);
-        cout << ss.str() << endl;
+//*********************************************
+// Provide your implementation of llpivot below
+//*********************************************
+
+
+void llpivot (Node*& head, Node*& smaller, Node*& larger, int pivot) {
+    if(!head) {
+      smaller = nullptr;
+      larger = nullptr;
+      return;
     }
-  }
-  else
-  {
-      cout << "Please provide a circuit file to simulate." << endl;
-      return 1;
-  }
+    if(head->val <= pivot) {
+        smaller = head; 
+        //assign head to the next value (prepping for recursion)
+        head = head ->next;
+        //set the next value to null of smaller since address we don't know
+        //in general helps move the node from one place to another 
+        smaller->next = NULL;
+        llpivot(head, smaller->next, larger, pivot);
+     } else if(head->val > pivot) {
+        larger = head;
+        head = head ->next;
+        larger->next = NULL;
+        llpivot(head, smaller, larger->next, pivot);
+     } 
+    
 }
