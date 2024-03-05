@@ -1,6 +1,3 @@
-
-
-
 #include <vector>
 #include <random>
 #include <iostream>
@@ -119,4 +116,8 @@ Event* NotGate::update(uint64_t current_time)
          
 	}
   return e;
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 1af34b824eb013ff95aa7277c1584c401ae87f20
